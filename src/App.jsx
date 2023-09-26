@@ -17,7 +17,7 @@ import Account from "../src/pages/Account.jsx";
 import Bookings from "../src/pages/Bookings.jsx";
 import Cabins from "../src/pages/Cabins.jsx";
 
-// react query
+// react query creating client
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

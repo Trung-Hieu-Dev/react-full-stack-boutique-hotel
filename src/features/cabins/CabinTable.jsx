@@ -1,5 +1,3 @@
-/* eslint-disable  */
-
 import styled from "styled-components";
 import { useQuery } from "@tanstack/react-query";
 import { getCabins } from "../../services/apiCabins.js";
@@ -33,11 +31,8 @@ const TableHeader = styled.header`
 `;
 
 const CabinTable = () => {
-  const {
-    isLoading,
-    data: cabins,
-    error,
-  } = useQuery({
+  // react query getting data
+  const { isLoading, data: cabins } = useQuery({
     queryKey: ["cabin"],
     queryFn: getCabins,
   });
