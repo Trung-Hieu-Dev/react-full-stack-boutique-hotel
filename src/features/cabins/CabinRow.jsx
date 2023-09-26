@@ -1,5 +1,4 @@
-/* eslint-disable  */
-
+import PropTypes from "prop-types";
 import toast from "react-hot-toast";
 import styled from "styled-components";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -84,3 +83,14 @@ const CabinRow = ({ cabin }) => {
 };
 
 export default CabinRow;
+
+CabinRow.propTypes = {
+  cabin: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    maxCapacity: PropTypes.number.isRequired,
+    regularPrice: PropTypes.number.isRequired,
+    discount: PropTypes.number.isRequired,
+    image: PropTypes.string.isRequired,
+  }).isRequired,
+};
