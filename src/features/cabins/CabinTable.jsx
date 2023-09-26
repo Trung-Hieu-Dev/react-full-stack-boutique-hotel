@@ -33,7 +33,7 @@ const TableHeader = styled.header`
 const CabinTable = () => {
   // react query getting data
   const { isLoading, data: cabins } = useQuery({
-    queryKey: ["cabin"],
+    queryKey: ["cabins"],
     queryFn: getCabins,
   });
 

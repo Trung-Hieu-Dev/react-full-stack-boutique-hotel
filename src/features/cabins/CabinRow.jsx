@@ -62,7 +62,7 @@ const CabinRow = ({ cabin }) => {
     onSuccess: () => {
       toast.success("Cabin successfully deleted!");
       queryClient.invalidateQueries({
-        queryKey: ["cabin"],
+        queryKey: ["cabins"],
       });
     },
     onError: (error) => toast.error(error.message),
@@ -86,11 +86,11 @@ export default CabinRow;
 
 CabinRow.propTypes = {
   cabin: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    maxCapacity: PropTypes.number.isRequired,
-    regularPrice: PropTypes.number.isRequired,
-    discount: PropTypes.number.isRequired,
-    image: PropTypes.string.isRequired,
+    id: PropTypes.number,
+    name: PropTypes.string,
+    maxCapacity: PropTypes.number,
+    regularPrice: PropTypes.number,
+    discount: PropTypes.number,
+    image: PropTypes.string,
   }).isRequired,
 };
