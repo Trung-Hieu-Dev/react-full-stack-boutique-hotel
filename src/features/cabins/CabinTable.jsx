@@ -5,7 +5,7 @@ import Spinner from "../../ui/Spinner.jsx";
 import CabinRow from "../../features/cabins/CabinRow.jsx";
 
 // custom hook
-import { useCabins } from "../../features/cabins/useCabins.jsx";
+import { useCabins } from "../../features/cabins/useCabins.js";
 
 const Table = styled.div`
   border: 1px solid var(--color-grey-200);

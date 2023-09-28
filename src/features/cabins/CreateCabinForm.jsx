@@ -10,8 +10,8 @@ import ButtonCancel from "../../ui/ButtonCancel.jsx";
 import FormRow from "../../ui/FormRow.jsx";
 
 // custom hook
-import { useCreateCabin } from "../../features/cabins/useCreateCabin.jsx";
-import { useEditCabin } from "../../features/cabins/useEditCabin.jsx";
+import { useCreateCabin } from "../../features/cabins/useCreateCabin.js";
+import { useEditCabin } from "../../features/cabins/useEditCabin.js";
 
 function CreateCabinForm({ cabinToEdit = {}, onShowForm }) {
   const { id: editId, ...editValues } = cabinToEdit;

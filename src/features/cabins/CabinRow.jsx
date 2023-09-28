@@ -4,8 +4,8 @@ import { useState } from "react";
 import { HiPencil, HiTrash } from "react-icons/hi";
 import { HiSquare2Stack } from "react-icons/hi2";
 
-import { useCreateCabin } from "../../features/cabins/useCreateCabin.jsx";
-import { useDeleteCabin } from "../../features/cabins/useDeleteCabin.jsx";
+import { useCreateCabin } from "../../features/cabins/useCreateCabin.js";
+import { useDeleteCabin } from "../../features/cabins/useDeleteCabin.js";
 import CreateCabinForm from "../../features/cabins/CreateCabinForm.jsx";
 
 import { formatCurrency } from "../../utils/helpers.js";
