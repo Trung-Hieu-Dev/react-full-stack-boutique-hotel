@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import Spinner from "../../ui/Spinner.jsx";
 import Form from "../../ui/Form";
 import FormRow from "../../ui/FormRow";
