@@ -6,6 +6,7 @@ import FileInput from "../../ui/FileInput";
 import Form from "../../ui/Form";
 import Input from "../../ui/Input";
 import Textarea from "../../ui/Textarea";
+import ButtonCancel from "../../ui/ButtonCancel.jsx";
 import FormRow from "../../ui/FormRow.jsx";
 
 // custom hook
@@ -132,8 +133,11 @@ function CreateCabinForm({ cabinToEdit = {}, onShowForm }) {
       <FormRow>
         {/* type is an HTML attribute! */}
         <Button $variation="secondary" type="reset">
-          Cancel
+          Reset
         </Button>
+        <ButtonCancel $variation="secondary" onClick={() => onShowForm()}>
+          Cancel
+        </ButtonCancel>
         <Button disabled={isWorking}>
           {isEditSession ? "Edit" : "Add"} Cabin
         </Button>
