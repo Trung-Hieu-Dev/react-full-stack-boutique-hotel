@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useForm } from "react-hook-form";
 
 // components
@@ -13,7 +12,7 @@ import FormRow from "../../ui/FormRow.jsx";
 import { useCreateCabin } from "../../features/cabins/useCreateCabin.jsx";
 import { useEditCabin } from "../../features/cabins/useEditCabin.jsx";
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onShowForm }) {
   const { id: editId, ...editValues } = cabinToEdit;
   const isEditSession = Boolean(editId);
 
@@ -37,10 +36,18 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     if (isEditSession)
       editCabin(
         { newCabinData: { ...data, image }, id: editId },
-        { onSuccess: (data) => reset() },
+        { onSuccess: () => reset() },
       );
     else
-      createCabin({ ...data, image: image }, { onSuccess: (data) => reset() });
+      createCabin(
+        { ...data, image: image },
+        {
+          onSuccess: () => {
+            reset();
+            onShowForm();
+          },
+        },
+      );
   }
 
   return (
