@@ -1,13 +1,7 @@
-import {
-  cloneElement,
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
+import { useOutSideClick } from "../hooks/useOutSideClick.js";
 import styled from "styled-components";
 
 const StyledModal = styled.div`
@@ -84,20 +78,7 @@ const Window = ({ children, name }) => {
   const { openName, close } = useContext(ModalContext);
 
   // click outside to close Window Modal
-  const ref = useRef();
-
-  useEffect(() => {
-    function handleClick(e) {
-      if (ref.current && !ref.current.contains(e.target)) {
-        close();
-      }
-    }
-    document.addEventListener("click", handleClick, true);
-
-    return () => {
-      document.removeEventListener("click", handleClick, true);
-    };
-  }, [close]);
+  const ref = useOutSideClick(close, true);
 
   // click icon to close Window Modal
   if (name !== openName) return null;
