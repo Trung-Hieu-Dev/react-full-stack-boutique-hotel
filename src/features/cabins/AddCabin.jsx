@@ -1,5 +1,3 @@
-/* eslint-disable */
-import { useState } from "react";
 import CabinTable from "../../features/cabins/CabinTable.jsx";
 
 import Modal from "../../ui/Modal.jsx";
