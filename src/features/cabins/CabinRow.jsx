@@ -4,8 +4,8 @@ import { HiPencil, HiTrash } from "react-icons/hi";
 import { HiSquare2Stack } from "react-icons/hi2";
 
 // custom hooks
-import { useCreateCabin } from "../../features/cabins/useCreateCabin.js";
-import { useDeleteCabin } from "../../features/cabins/useDeleteCabin.js";
+import { useCreateCabin } from "./useCreateCabin.js";
+import { useDeleteCabin } from "./useDeleteCabin.js";
 
 // utils
 import { formatCurrency } from "../../utils/helpers.js";
@@ -93,6 +93,7 @@ const CabinRow = ({ cabin }) => {
         <span>&mdash;</span>
       )}
       <div>
+        {/* duplicating */}
         <button disabled={isCreating} onClick={handleDuplicate}>
           <HiSquare2Stack />
         </button>
