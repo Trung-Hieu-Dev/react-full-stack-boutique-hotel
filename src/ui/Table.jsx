@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { createContext, useContext } from "react";
 import styled from "styled-components";
 
