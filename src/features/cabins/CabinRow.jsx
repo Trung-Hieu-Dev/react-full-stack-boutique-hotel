@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { HiPencil, HiTrash } from "react-icons/hi";
@@ -59,7 +57,7 @@ const CabinRow = ({ cabin }) => {
 
   // delete & duplicate with React Query
   const { isDeleting, deleteCabin } = useDeleteCabin();
-  const { isCreating, createCabin } = useCreateCabin();
+  const { createCabin } = useCreateCabin();
 
   // duplicate
   function handleDuplicate() {
