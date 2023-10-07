@@ -12,9 +12,16 @@ export function useBookings() {
       ? null
       : { field: "status", value: filterValue };
 
+  // Sort
+  const sortByRaw = searchParams.get("sortBy") || "startDate-desc";
+  const [field, direction] = sortByRaw.split("-");
+  const sortBy = { field, direction };
+
+  // react query
   const { isLoading, data: bookings } = useQuery({
-    queryKey: ["bookings", filter], // refresh page if bookings / filter changed
-    queryFn: () => getBookingsApi({ filter }),
+    queryKey: ["bookings", filter, sortBy], // tracked data for refresh
+    queryFn: () => getBookingsApi({ filter, sortBy }),
   });
+
   return { isLoading, bookings };
 }
