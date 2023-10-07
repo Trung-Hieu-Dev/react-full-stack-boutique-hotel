@@ -1,5 +1,6 @@
 // components
 import { useSearchParams } from "react-router-dom";
+import Empty from "../../ui/Empty.jsx";
 import Spinner from "../../ui/Spinner.jsx";
 import CabinRow from "../../features/cabins/CabinRow.jsx";
 import Table from "../../ui/Table.jsx";
@@ -9,11 +10,13 @@ import Menus from "../../ui/Menus.jsx";
 import { useCabins } from "../../features/cabins/useCabins.js";
 
 const CabinTable = () => {
+  // access query params from url
+  const [searchParams] = useSearchParams();
+
   // react query getting data from database
   const { isLoading, cabins } = useCabins();
 
-  // access query params from url
-  const [searchParams] = useSearchParams();
+  if (!cabins.length) return <Empty resourceName="cabins" />;
 
   if (isLoading) return <Spinner />;
 
