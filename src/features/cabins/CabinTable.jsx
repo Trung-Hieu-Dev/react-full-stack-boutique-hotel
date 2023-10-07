@@ -1,6 +1,6 @@
 // components
 import { useSearchParams } from "react-router-dom";
-import Empty from "../../ui/Empty.jsx";
+// import Empty from "../../ui/Empty.jsx";
 import Spinner from "../../ui/Spinner.jsx";
 import CabinRow from "../../features/cabins/CabinRow.jsx";
 import Table from "../../ui/Table.jsx";
@@ -16,7 +16,7 @@ const CabinTable = () => {
   // react query getting data from database
   const { isLoading, cabins } = useCabins();
 
-  if (!cabins.length) return <Empty resourceName="cabins" />;
+  // if (!cabins || null) return <Empty resourceName="cabins" />;
 
   if (isLoading) return <Spinner />;
 
