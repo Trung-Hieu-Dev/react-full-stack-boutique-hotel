@@ -17,11 +17,16 @@ export function useBookings() {
   const [field, direction] = sortByRaw.split("-");
   const sortBy = { field, direction };
 
+  // Pagination
+  const currentPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page"));
+
   // react query
-  const { isLoading, data: bookings } = useQuery({
-    queryKey: ["bookings", filter, sortBy], // tracked data for refresh
-    queryFn: () => getBookingsApi({ filter, sortBy }),
+  const { isLoading, data: { data: bookings, count } = {} } = useQuery({
+    queryKey: ["bookings", filter, sortBy, currentPage], // tracked data for refresh
+    queryFn: () => getBookingsApi({ filter, sortBy, currentPage }),
   });
 
-  return { isLoading, bookings };
+  return { isLoading, bookings, count };
 }
