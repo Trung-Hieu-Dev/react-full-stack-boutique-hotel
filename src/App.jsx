@@ -15,6 +15,7 @@ import Settings from "../src/pages/Settings.jsx";
 import Users from "../src/pages/Users.jsx";
 import Account from "../src/pages/Account.jsx";
 import Bookings from "../src/pages/Bookings.jsx";
+import Booking from "../src/pages/Booking.jsx";
 import Cabins from "../src/pages/Cabins.jsx";
 
 // react query creating client
@@ -37,6 +38,7 @@ function App() {
             <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="bookings" element={<Bookings />} />
+            <Route path="bookings/:bookingId" element={<Booking />} />
             <Route path="cabins" element={<Cabins />} />
             <Route path="users" element={<Users />} />
             <Route path="settings" element={<Settings />} />
