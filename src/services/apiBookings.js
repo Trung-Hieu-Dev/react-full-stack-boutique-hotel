@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import supabase from "./supabase.js";
 
 export async function getBookings({ filter, sortBy }) {

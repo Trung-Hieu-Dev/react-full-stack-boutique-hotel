@@ -1,4 +1,5 @@
 import BookingRow from "./BookingRow";
+import Pagination from "../../ui/Pagination.jsx";
 import Table from "../../ui/Table";
 import Menus from "../../ui/Menus";
 import Empty from "../../ui/Empty.jsx";
@@ -30,6 +31,10 @@ function BookingTable() {
             <BookingRow key={booking.id} booking={booking} />
           )}
         />
+
+        <Table.Footer>
+          <Pagination counts={5} />
+        </Table.Footer>
       </Table>
     </Menus>
   );
