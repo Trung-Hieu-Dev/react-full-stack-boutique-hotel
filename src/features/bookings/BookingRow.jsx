@@ -1,5 +1,6 @@
 /* eslint-disable */
 
+import { HiArrowDownOnSquare } from "react-icons/hi2";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { HiEye } from "react-icons/hi";
@@ -90,12 +91,23 @@ function BookingRow({
       <Menus.Menu>
         <Menus.Toggle id={bookingId} />
         <Menus.List id={bookingId}>
+          {/* Detail Button */}
           <Menus.Button
             icon={<HiEye />}
             onClick={() => navigate(`/bookings/${bookingId}`)}
           >
             See Details
           </Menus.Button>
+
+          {/*   Checkin Button */}
+          {status === "unconfirmed" && (
+            <Menus.Button
+              icon={<HiArrowDownOnSquare />}
+              onClick={() => navigate(`/checkin/${bookingId}`)}
+            >
+              Check in
+            </Menus.Button>
+          )}
         </Menus.List>
       </Menus.Menu>
     </Table.Row>
