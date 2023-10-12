@@ -13,6 +13,8 @@ import { format, isToday } from "date-fns";
 import { formatCurrency } from "../../utils/helpers";
 import { formatDistanceFromNow } from "../../utils/helpers";
 
+import { useCheckout } from "../../features/check-in-out/useCheckout.js";
+
 const Cabin = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
@@ -55,6 +57,7 @@ function BookingRow({
   },
 }) {
   const navigate = useNavigate();
+  const { checkout, isCheckingOut } = useCheckout();
 
   const statusToTagName = {
     unconfirmed: "blue",
@@ -106,6 +109,17 @@ function BookingRow({
               onClick={() => navigate(`/checkin/${bookingId}`)}
             >
               Check in
+            </Menus.Button>
+          )}
+
+          {/*   Checkout Button */}
+          {status === "checked-in" && (
+            <Menus.Button
+              icon={<HiArrowDownOnSquare />}
+              onClick={() => checkout(bookingId)}
+              disabled={isCheckingOut}
+            >
+              Check out
             </Menus.Button>
           )}
         </Menus.List>
