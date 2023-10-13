@@ -11,10 +11,9 @@ export function useLogin() {
     mutationFn: ({ email, password }) => loginApi({ email, password }),
     onSuccess: (user) => {
       queryClient.setQueriesData(["user"], user); // set data into react query catch
-      navigate("/");
+      navigate("/", { replace: true });
     },
-    onError: (err) => {
-      console.log("Error", err);
+    onError: () => {
       toast.error("Invalid email or password!");
     },
   });
