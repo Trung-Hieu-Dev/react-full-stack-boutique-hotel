@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { HiOutlineUser } from "react-icons/hi";
 
 import ButtonIcon from "./ButtonIcon.jsx";
+import DarkModeToggle from "./DarkModeToggle.jsx";
 import Logout from "../features/authentication/Logout.jsx";
 
 const StyledHeaderMenu = styled.ul`
@@ -18,6 +19,9 @@ const HeaderMenu = () => {
         <ButtonIcon onClick={() => navigate("/account")}>
           <HiOutlineUser />
         </ButtonIcon>
+      </li>
+      <li>
+        <DarkModeToggle />
       </li>
       <li>
         <Logout />
