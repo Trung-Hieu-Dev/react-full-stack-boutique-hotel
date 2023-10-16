@@ -2,22 +2,23 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import GlobalStyles from "../src/styles/GlobalStyles.js";
+import GlobalStyles from "./styles/GlobalStyles.js";
 
 // layout
-import AppLayout from "../src/ui/AppLayout.jsx";
+import AppLayout from "./ui/AppLayout.jsx";
 
 // pages
-import Dashboard from "../src/pages/Dashboard.jsx";
-import Login from "../src/pages/Login.jsx";
-import PageNotFound from "../src/pages/PageNotFound.jsx";
-import Settings from "../src/pages/Settings.jsx";
-import Users from "../src/pages/Users.jsx";
-import Account from "../src/pages/Account.jsx";
-import Bookings from "../src/pages/Bookings.jsx";
-import Booking from "../src/pages/Booking.jsx";
-import Cabins from "../src/pages/Cabins.jsx";
-import Checkin from "../src/pages/Checkin.jsx";
+import ProtectedRoute from "./pages/ProtectedRoute.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import Login from "./pages/Login.jsx";
+import PageNotFound from "./pages/PageNotFound.jsx";
+import Settings from "./pages/Settings.jsx";
+import Users from "./pages/Users.jsx";
+import Account from "./pages/Account.jsx";
+import Bookings from "./pages/Bookings.jsx";
+import Booking from "./pages/Booking.jsx";
+import Cabins from "./pages/Cabins.jsx";
+import Checkin from "./pages/Checkin.jsx";
 
 // react query creating client
 const queryClient = new QueryClient({
@@ -35,7 +36,13 @@ function App() {
       <GlobalStyles />
       <BrowserRouter>
         <Routes>
-          <Route element={<AppLayout />}>
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate replace to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="bookings" element={<Bookings />} />
