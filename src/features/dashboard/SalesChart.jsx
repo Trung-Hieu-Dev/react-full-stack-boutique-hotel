@@ -1,5 +1,3 @@
-/* eslint-disable*/
-
 import { eachDayOfInterval, format, isSameDay, subDays } from "date-fns";
 import {
   Area,
