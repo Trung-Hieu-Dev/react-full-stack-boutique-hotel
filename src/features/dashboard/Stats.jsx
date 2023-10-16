@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import { HiOutlineBriefcase, HiOutlineChartBar } from "react-icons/hi";
 import { HiOutlineBanknotes, HiOutlineCalendarDays } from "react-icons/hi2";
 import Stat from "./Stat.jsx";
