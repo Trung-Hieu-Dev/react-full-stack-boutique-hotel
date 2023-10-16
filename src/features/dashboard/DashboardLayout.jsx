@@ -3,6 +3,7 @@ import styled from "styled-components";
 // components
 import Spinner from "../../ui/Spinner.jsx";
 import Stats from "../../features/dashboard/Stats.jsx";
+import SalesChart from "../../features/dashboard/SalesChart.jsx";
 
 // hooks
 import { useRecentBooking } from "./useRecentBooking.js";
@@ -30,8 +31,6 @@ const DashboardLayout = () => {
   if (isLoadingBookings || isLoadingStays || isLoadingCabins)
     return <Spinner />;
 
-  console.log(bookings, confirmedStays);
-
   return (
     <StyledDashboardLayout>
       <Stats
@@ -42,7 +41,7 @@ const DashboardLayout = () => {
       />
       <div>Today activity</div>
       <div>Chart stay durations</div>
-      <div>Chart sales</div>
+      <SalesChart bookings={bookings} numDays={numDays} />
     </StyledDashboardLayout>
   );
 };
