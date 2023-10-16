@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+// hooks
+import { useUser } from "../../features/authentication/useUser.js";
+
 const StyledUserAvatar = styled.div`
   display: flex;
   gap: 1.2rem;
@@ -19,3 +22,17 @@ const Avatar = styled.img`
   border-radius: 50%;
   outline: 2px solid var(--color-grey-100);
 `;
+
+const UserAvatar = () => {
+  const { user } = useUser();
+  const { fullName, avatar } = user.user_metadata;
+
+  return (
+    <StyledUserAvatar>
+      <Avatar src={avatar || "default-user.jpg"} alt={fullName} />
+      <span>{fullName}</span>
+    </StyledUserAvatar>
+  );
+};
+
+export default UserAvatar;
