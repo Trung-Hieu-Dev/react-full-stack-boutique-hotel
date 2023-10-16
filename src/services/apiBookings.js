@@ -110,3 +110,27 @@ export async function getStaysAfterDate(date) {
 
   return data;
 }
+
+// Activity means that is there a checkin or a checkout today
+export async function getStaysTodayActivity() {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*, guests(fullName, nationality, countryFlag)")
+    .or(
+      `and(status.eq.unconfirmed,startDate.eq.${getToday()}),and(status.eq.checked-in,endDate.eq.${getToday()})`,
+    )
+    .order("created_at");
+
+  // Equivalent to this. But by querying this, we only download the data we actually need,
+  // otherwise we would need ALL bookings ever created
+  /* Guests ready to check in */
+  // (stay.status === 'unconfirmed' && isToday(new Date(stay.startDate))) ||
+  /* Guests ready to check out */
+  // (stay.status === 'checked-in' && isToday(new Date(stay.endDate)))
+
+  if (error) {
+    console.error(error);
+    throw new Error("Bookings could not get loaded");
+  }
+  return data;
+}
