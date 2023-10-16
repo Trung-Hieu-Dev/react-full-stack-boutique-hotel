@@ -87,6 +87,8 @@ const Toggle = ({ id }) => {
   const { openId, close, open, setPosition } = useContext(MenusContext);
 
   function handleClick(e) {
+    e.stopPropagation();
+
     // calculate position to display button list
     const rect = e.target.closest("button").getBoundingClientRect();
 
@@ -108,7 +110,10 @@ const Toggle = ({ id }) => {
 
 const List = ({ id, children }) => {
   const { openId, position, close } = useContext(MenusContext);
-  const ref = useOutSideClick(close, true);
+
+  const ref = useOutSideClick(() => {
+    close();
+  }, false);
 
   if (openId !== id) return null;
 
